@@ -1,0 +1,27 @@
+/* Logo center alignment specific fixes */
+.logo {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.logo img {
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+/* Ensure logo is centered properly when floating */
+.header.scrolled .logo {
+  justify-content: flex-start !important;
+}
+
+/* Red underline for active link to match the bottom red border */
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #ff5a5f;
+}

@@ -1,0 +1,40 @@
+/* Contact section layout fixes */
+
+/* Ensure the contact section has equal sizing */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Equal columns */
+  gap: 30px;
+}
+
+/* Ensure map container takes full space */
+.map-container {
+  width: 100%;
+  height: 450px;
+  display: block;
+}
+
+.map-frame {
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+}
+
+/* Style contact info for visual balance */
+.contact-info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+  
+  .map-container {
+    height: 350px; /* Shorter on mobile */
+  }
+}

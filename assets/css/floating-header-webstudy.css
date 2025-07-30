@@ -1,0 +1,429 @@
+/* WebStudy-inspired floating header for JMC - Exact replica */
+
+/* Base header styles - always fixed */
+.header {
+  position: fixed !important;
+  width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background-color: #000000 !important; /* Pure black */
+  box-shadow: none !important; /* No shadow initially */
+}
+
+/* Container for proper alignment */
+.header .container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  transition: all 0.3s ease !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* Full width header adjustment - ensures proper centering */
+.header:not(.scrolled) .container {
+  max-width: 100% !important;
+}
+
+/* Initial state - full width bar, no rounded corners */
+.header:not(.scrolled) {
+  width: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  padding: 15px 0 !important;
+  border-radius: 0 !important;
+  background-color: #000000 !important; /* Pure black */
+}
+
+/* Scrolled state - floating with rounded corners, WebStudy style */
+.header.scrolled {
+  width: 90% !important; /* Use percentage instead of calc for better scaling */
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 15px !important;
+  border-radius: 18px !important;
+  padding: 0 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
+  background: rgba(0, 0, 0, 0.8) !important; /* Semi-transparent black */
+  border-bottom: 3px solid #ff5a5f !important; /* Red line at bottom - ONLY when scrolled */
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* Enhanced responsive adjustments for all screen sizes */
+@media (min-width: 3841px) {
+  /* 8K displays and above */
+  .header.scrolled {
+    max-width: 2200px !important;
+    width: 80% !important; /* Percentage-based width for better scaling */
+    top: 30px !important;
+    background: rgba(0, 0, 0, 0.8) !important; /* Semi-transparent black */
+    border-bottom: 3px solid #ff5a5f !important; /* Keep the red line when scrolled */
+  }
+  
+  .header .container {
+    max-width: 2200px !important;
+  }
+  
+  .header .navbar {
+    max-width: 2000px !important;
+    padding: 0 40px !important;
+  }
+  
+  .header:not(.scrolled) .navbar {
+    padding: 8px 40px !important;
+  }
+  
+  .header.scrolled .navbar {
+    padding: 15px 40px !important;
+  }
+}
+
+@media (min-width: 2561px) and (max-width: 3840px) {
+  /* 4K-6K displays */
+  .header.scrolled {
+    max-width: 2200px !important;
+    width: 80% !important; /* Percentage-based width */
+    top: 25px !important;
+    border-radius: 20px !important;
+    border-bottom: 3px solid #ff5a5f !important; /* Keep the red line when scrolled */
+  }
+  
+  .header .container {
+    max-width: 2200px !important;
+  }
+  
+  .header .navbar {
+    max-width: 2000px !important;
+    padding: 0 40px !important;
+  }
+  
+  .header:not(.scrolled) .navbar {
+    padding: 8px 35px !important;
+  }
+  
+  .header.scrolled .navbar {
+    padding: 15px 35px !important;
+  }
+}
+
+@media (min-width: 1921px) and (max-width: 2560px) {
+  /* 2K-4K displays */
+  .header.scrolled {
+    max-width: 1800px !important;
+    width: 85% !important; /* Using percentage for better scaling */
+    top: 20px !important;
+    border-radius: 18px !important;
+    border-bottom: 3px solid #ff5a5f !important; /* Keep the red line when scrolled */
+  }
+  
+  .header .container {
+    max-width: 1800px !important;
+  }
+  
+  .header .navbar {
+    max-width: 1600px !important;
+    margin: 0 auto !important;
+    padding: 0 30px !important;
+  }
+  
+  .header:not(.scrolled) .navbar {
+    padding: 7px 30px !important;
+  }
+  
+  .header.scrolled .navbar {
+    padding: 14px 30px !important;
+  }
+}
+
+@media (min-width: 1441px) and (max-width: 1920px) {
+  /* Large desktop monitors */
+  .header.scrolled {
+    max-width: 1600px !important;
+    width: 85% !important; /* Using percentage for better scaling */
+    top: 18px !important;
+  }
+  
+  .header .container {
+    max-width: 1600px !important;
+  }
+  
+  .header .navbar {
+    max-width: 1400px !important;
+  }
+  
+  .header:not(.scrolled) .navbar {
+    padding: 6px 25px !important;
+  }
+  
+  .header.scrolled .navbar {
+    padding: 12px 25px !important;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1440px) {
+  /* Standard laptops and desktops - including Laptop L (1440px) */
+  .header.scrolled {
+    max-width: 1320px !important;
+    width: 90% !important; /* Using percentage for better scaling */
+    top: 15px !important;
+  }
+  
+  .header .container {
+    max-width: 1320px !important;
+  }
+  
+  .header .navbar {
+    max-width: 1200px !important;
+  }
+  
+  .header:not(.scrolled) .navbar {
+    padding: 5px 20px !important;
+  }
+  
+  .header.scrolled .navbar {
+    padding: 10px 20px !important;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  /* Small laptops */
+  .header.scrolled {
+    max-width: 1140px !important;
+    width: calc(100% - 40px) !important;
+    top: 15px !important;
+  }
+  
+  .header .container {
+    max-width: 1140px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  /* Tablets and large mobile */
+  .header.scrolled {
+    width: calc(100% - 30px) !important;
+    top: 10px !important;
+    max-width: 960px !important;
+  }
+  
+  .header .container {
+    max-width: 960px !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 767px) {
+  /* Small tablets */
+  .header.scrolled {
+    width: calc(100% - 24px) !important;
+    top: 10px !important;
+    max-width: 720px !important;
+    border-radius: 12px !important;
+  }
+  
+  .header .container {
+    max-width: 720px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Mobile phones */
+  .header.scrolled {
+    width: calc(100% - 20px) !important;
+    top: 10px !important;
+    border-radius: 14px !important;
+    max-width: 540px !important;
+  }
+  
+  .header .container {
+    max-width: 540px !important;
+    padding: 0 10px !important;
+  }
+}
+
+/* Navbar styling to match WebStudy */
+.header .navbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 1300px !important;
+}
+
+/* Initial state navbar padding */
+.header:not(.scrolled) .navbar {
+  padding: 5px 30px !important;
+}
+
+/* Scrolled state navbar padding adjustment */
+.header.scrolled .navbar {
+  padding: 12px 30px !important;
+}
+
+/* Logo styling */
+.logo, .navbar-brand {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  color: #fff !important;
+  margin-right: 30px !important;
+  position: relative !important;
+}
+
+/* Logo text */
+.logo span, .navbar-brand span {
+  font-weight: 600 !important;
+  margin-left: 8px !important;
+  font-size: 18px !important;
+  color: #fff !important;
+  white-space: nowrap !important;
+}
+
+/* Logo size adjustments */
+.header:not(.scrolled) .logo img, .header:not(.scrolled) .navbar-brand img {
+  max-height: 40px !important;
+  height: 40px !important;
+  width: auto !important;
+  transition: all 0.3s ease !important;
+  display: block !important;
+}
+
+.header.scrolled .logo img, .header.scrolled .navbar-brand img {
+  max-height: 35px !important;
+  height: 35px !important;
+  width: auto !important;
+  display: block !important;
+}
+
+/* Large screen logo adjustments */
+@media (min-width: 1440px) {
+  .header:not(.scrolled) .logo img, .header:not(.scrolled) .navbar-brand img {
+    height: 42px !important;
+  }
+  
+  .header.scrolled .logo img, .header.scrolled .navbar-brand img {
+    height: 38px !important;
+  }
+}
+
+@media (min-width: 1921px) {
+  .header:not(.scrolled) .logo img, .header:not(.scrolled) .navbar-brand img {
+    height: 45px !important;
+  }
+  
+  .header.scrolled .logo img, .header.scrolled .navbar-brand img {
+    height: 40px !important;
+  }
+}
+
+/* Navigation menu */
+.nav-list {
+  display: flex !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.nav-menu {
+  margin-left: auto !important; /* Push menu to right */
+  display: flex !important;
+  align-items: center !important;
+}
+
+.nav-item {
+  margin: 0 12px !important;
+}
+
+.nav-link {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  padding: 8px 0 !important;
+  position: relative !important;
+  transition: all 0.3s ease !important;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #ff5a5f !important;
+}
+
+/* Mobile menu toggle styling */
+.menu-toggle {
+  display: none !important;
+  cursor: pointer !important;
+  margin-left: 15px !important;
+  z-index: 1001 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.menu-toggle span {
+  display: block !important;
+  width: 25px !important;
+  height: 3px !important;
+  background-color: #fff !important;
+  margin: 5px 0 !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Mobile menu animation */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px) !important;
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0 !important;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px) !important;
+}
+
+/* Mobile responsive menu styles */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block !important;
+  }
+  
+  .nav-menu {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background: rgba(13, 17, 23, 0.95) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 1000 !important;
+    transition: right 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+  
+  .nav-menu.active {
+    right: 0 !important;
+  }
+  
+  .nav-list {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .nav-item {
+    margin: 15px 0 !important;
+  }
+  
+  .nav-link {
+    font-size: 18px !important;
+    padding: 10px !important;
+  }
+}

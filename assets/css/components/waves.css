@@ -1,0 +1,112 @@
+/* Wave Components */
+.wave-container {
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  margin-top: -1px; /* Ensure seamless connection with content */
+  filter: drop-shadow(0 -10px 20px rgba(0, 0, 0, 0.2));
+}
+
+.wave-container.footer-wave {
+  filter: drop-shadow(0 -15px 30px rgba(0, 0, 0, 0.4));
+  margin-bottom: -2px; /* Create seamless connection with footer content */
+}
+
+.wave-container.top-wave {
+  background: #000000; /* Match header background */
+  margin-top: 60px; /* Add space below header */
+  z-index: 5;
+}
+
+.wave-container.top-wave,
+.wave-container.bottom-wave {
+  margin: 0;
+  padding: 0;
+  z-index: 5;
+  display: block;
+  line-height: 0; 
+  font-size: 0; /* Eliminate any potential whitespace */
+  overflow: hidden; /* Prevent any overflow */
+  position: relative;
+  height: auto; /* Ensure height is based on content */
+}
+
+/* Ensure the top wave connects correctly with the next section */
+.top-wave + section {
+  margin-top: -2px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Fix wave image spacing */
+.wave-container .wave-img,
+.wave-container img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+}
+
+/* Fix for wave-img class specifically */
+.wave-img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-left: 0 !important;
+  width: 100% !important;
+  position: relative;
+  left: 0;
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Fix for the wave decoration element */
+.wave-decoration {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Modify companies section to connect with wave */
+#companies {
+  margin-top: -1px; /* Connect with wave */
+}
+
+/* Fix the wave connection with the About section */
+.about .wave-container.top-wave {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  line-height: 0; /* Remove any line height spacing */
+  background: black; /* Match the about section background */
+  display: block;
+}
+
+/* Fix for the bottom wave in the About section */
+.about .wave-container.bottom-wave,
+#about .wave-container.bottom-wave,
+div.wave-container.bottom-wave {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  font-size: 0;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+  background-color: transparent;
+  margin-bottom: -2px; /* Remove gap between sections */
+}
+
+/* Ensure bottom wave images display properly */
+.wave-container.bottom-wave img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}

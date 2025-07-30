@@ -1,0 +1,78 @@
+/* Button fixes for hero section */
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  position: relative;
+  z-index: 9999 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.hero-cta .btn {
+  min-width: 160px;
+  position: relative;
+  z-index: 9999 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 30px rgba(230, 57, 70, 0.4), 0 0 25px rgba(230, 57, 70, 0.2) !important;
+  filter: brightness(1.1) !important;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--white-color) !important;
+  border-color: var(--white-color) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Ensure animation layer doesn't block clicks */
+.hero .animation-layer {
+  pointer-events: none !important;
+}
+
+/* Ensure hero content is clickable */
+.hero-content {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Remove any potential red borders */
+.hero, .hero-content, .hero-cta, .btn, .hero-cta .btn, .hero *, .animation-layer {
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Restore proper button shadows only */
+.btn-primary {
+  box-shadow: 0 10px 25px rgba(230, 57, 70, 0.3), 0 0 0 rgba(230, 57, 70, 0.5) !important;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 15px 30px rgba(230, 57, 70, 0.4), 0 0 25px rgba(230, 57, 70, 0.2) !important;
+}
+
+.btn-outline {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), inset 0 0 0 rgba(255, 255, 255, 0.2) !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+.btn-outline:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.2) !important;
+}
+.hero, .hero *, .hero-cta, .hero-cta *, .btn, .btn-primary, .btn-outline {
+  outline: none !important;
+  border-color: transparent !important;
+}

@@ -1,0 +1,76 @@
+/* High-resolution display optimizations */
+
+/* Retina and high-DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Refine typography for crisp text */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Improve box shadows and borders for high-resolution displays */
+  .company-card,
+  .contact-info,
+  .header {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 1px 1px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Sharper button borders */
+  .btn-outline {
+    border-width: 1.5px;
+  }
+  
+  /* Enhanced header bottom border */
+  .header-compact {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  /* Make section title underlines sharper */
+  .section-title::after {
+    height: 3px;
+  }
+}
+
+/* Ultra high-res displays (4K, etc.) */
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+  /* Further refine shadows for ultra-high-res displays */
+  .company-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Use slightly thicker borders for better visibility */
+  .contact-info,
+  .company-card {
+    border-width: 1.5px;
+  }
+}
+
+/* Optimize for 5K and higher displays */
+@media (min-width: 5120px) {
+  .container {
+    max-width: 1800px;
+  }
+  
+  /* Increase base font size for improved readability */
+  html {
+    font-size: 18px;
+  }
+  
+  .hero-title {
+    font-size: 5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    font-size: 4rem;
+  }
+  
+  /* Enhanced padding for 5K displays */
+  section {
+    padding: 120px 0;
+  }
+}

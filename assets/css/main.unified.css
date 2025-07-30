@@ -1,0 +1,28 @@
+/**
+ * Main CSS file for JMC Group Website
+ * 
+ * This file imports all CSS components in the correct order.
+ * For better performance, consider using a CSS bundler in production.
+ */
+
+/* Base styles */
+@import 'base/base.css';
+@import 'base/typography.css';
+
+/* Components */
+@import 'components/buttons.css';
+@import 'components/header.css';
+@import 'components/waves.css';
+
+/* Layout styles */
+@import 'layout/header.css';
+@import 'layout/hero.css';
+@import 'layout/about.css';
+@import 'layout/companies.css';
+@import 'layout/contact.css';
+@import 'layout/footer.css';
+
+/* Utilities */
+@import 'utils/responsive.css';
+@import 'utils/accessibility.css';
+@import 'utils/dark-mode.css';

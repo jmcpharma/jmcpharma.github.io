@@ -1,0 +1,68 @@
+/* Fixes for orientation changes */
+
+/* Landscape mobile devices */
+@media (max-width: 915px) and (orientation: landscape) {
+  /* Adjust header for landscape orientation */
+  .header {
+    width: calc(100% - 60px) !important;
+  }
+  
+  /* Ensure hero section fits better in landscape */
+  .hero-simple {
+    min-height: 350px;
+    padding: 80px 0 40px;
+  }
+  
+  /* Adjust the company grid for landscape */
+  .company-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .company-card {
+    max-width: none;
+  }
+  
+  /* Better footer layout for landscape */
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+  
+  /* Adjust body padding */
+  body {
+    padding-top: 90px !important;
+  }
+  
+  /* Tweak partner lists */
+  .partner-list {
+    column-count: 1;
+  }
+}
+
+/* Handle quick orientation changes */
+@media (orientation: portrait) {
+  .header, .hero-simple, .company-grid {
+    transition: all 0.3s ease;
+  }
+}
+
+@media (orientation: landscape) {
+  .header, .hero-simple, .company-grid {
+    transition: all 0.3s ease;
+  }
+}
+
+/* Fix for orientation changes on iOS */
+@supports (-webkit-touch-callout: none) {
+  @media (orientation: landscape) {
+    .hero-simple {
+      min-height: 300px;
+    }
+    
+    body {
+      min-height: -webkit-fill-available;
+    }
+  }
+}

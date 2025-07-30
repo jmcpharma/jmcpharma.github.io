@@ -1,0 +1,42 @@
+/* Typography Styles */
+.section-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  letter-spacing: -0.5px;
+}
+
+.section-logo .section-title {
+  font-size: 2.2rem;
+  margin-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.section-logo .section-title::after {
+  display: none;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--primary-color);
+  margin: 15px auto 0;
+  border-radius: 50px;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--gray-color);
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 300;
+}

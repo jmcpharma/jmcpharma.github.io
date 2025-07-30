@@ -1,0 +1,65 @@
+/* Dark Mode Styles */
+
+/* Apply dark mode when user preference is dark */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light-color: #1a1a1a;
+    --dark-color: #f1faee;
+    --gray-color: #a0a0a0;
+  }
+  
+  body {
+    background-color: #0a0a0a;
+    color: var(--dark-color);
+  }
+  
+  .header {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .header.scrolled {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .nav-link {
+    color: var(--white-color);
+  }
+  
+  .company-card {
+    background-color: #1a1a1a;
+  }
+  
+  .feature-item {
+    background-color: #1a1a1a;
+  }
+}
+
+/* Dark mode class for manual toggling */
+.dark-mode {
+  --light-color: #1a1a1a;
+  --dark-color: #f1faee;
+  --gray-color: #a0a0a0;
+  
+  background-color: #0a0a0a;
+  color: var(--dark-color);
+}
+
+.dark-mode .header {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode .header.scrolled {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.dark-mode .nav-link {
+  color: var(--white-color);
+}
+
+.dark-mode .company-card {
+  background-color: #1a1a1a;
+}
+
+.dark-mode .feature-item {
+  background-color: #1a1a1a;
+}

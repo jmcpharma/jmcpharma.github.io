@@ -1,0 +1,42 @@
+/* Mobile-specific fixes for wave images */
+
+@media (max-width: 480px) {
+  /* Fix all wave images on mobile devices */
+  .wave-img,
+  img.wave-img,
+  .wave-container img,
+  img[alt="wave decoration"],
+  .wave-decoration {
+    width: 100% !important;
+    margin-left: 0 !important;
+    left: 0 !important;
+    position: relative !important;
+    transform: none !important;
+    max-width: 100% !important;
+  }
+  
+  /* Target the specific image that's causing problems in the about section */
+  #about .wave-container.bottom-wave img,
+  .about .wave-container.bottom-wave img,
+  div.wave-container.bottom-wave img {
+    margin-left: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    display: block;
+    width: 100% !important;
+  }
+  
+  /* Fix for gaps between sections */
+  #contact,
+  .contact,
+  section#contact {
+    margin-top: -5px;
+  }
+  
+  /* Specifically target the img with alt="wave decoration" */
+  img[alt="wave decoration"] {
+    margin-left: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,239 @@
+/* Header styles with scroll effect - matching WebStudy style */
+
+/* Initial header state */
+.header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 100 !important;
+  padding: 10px 20px !important;
+  box-sizing: border-box !important;
+  background-color: #fff !important;
+  transition: all 0.4s ease !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Scrolled header state */
+.header.scrolled {
+  width: calc(100% - 40px) !important;
+  max-width: 1400px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  top: 20px !important;
+  border-radius: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* Better navbar spacing */
+.navbar {
+  padding: 12px 20px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Add padding to compensate for fixed header */
+body {
+  padding-top: 70px !important; /* Adjusted for initial header state */
+}
+
+/* Ensure proper container alignment inside header */
+.header .container {
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+/* Header floating animation */
+@keyframes header-float {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animation for scrolled header */
+.header.scrolled {
+  animation: header-float 0.3s ease-out forwards;
+}
+
+/* Enhanced header styling for laptops and larger screens */
+@media (min-width: 992px) {
+  .header {
+    border-radius: 20px !important;
+    width: calc(100% - 60px) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+  }
+  
+  /* Smooth header scroll effect */
+  .header.scrolled {
+    background: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2) !important;
+  }
+}
+
+/* Even more enhancement for very large screens */
+@media (min-width: 1400px) {
+  .header {
+    width: calc(100% - 120px) !important;
+    max-width: 1800px !important;
+    border-radius: 25px !important;
+  }
+}
+
+/* Mobile adjustments - only layout changes */
+@media (max-width: 768px) {
+  /* Header needs different styling on mobile */
+  .header {
+    width: calc(100% - 20px) !important;
+    top: 10px !important;
+    border-radius: 15px !important;
+  }
+  
+  /* Better navbar spacing on mobile */
+  .navbar {
+    padding: 10px 15px !important;
+    flex-direction: column;
+  }
+  
+  .logo {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-item {
+    margin: 0 5px;
+  }
+  
+  .nav-link {
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+  
+  /* Adjust body padding for mobile */
+  body {
+    padding-top: 110px !important;
+  }
+  
+  .header {
+    width: calc(100% - 30px) !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .header {
+    width: calc(100% - 20px) !important;
+    top: 10px !important;
+  }
+  
+  .navbar {
+    padding: 8px 12px !important;
+    width: 100% !important;
+  }
+  
+  .header .container {
+    padding: 0 !important;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .logo-img {
+    height: 40px !important;
+  }
+  
+  .nav-list {
+    gap: 5px;
+  }
+  
+  .nav-item {
+    margin: 0 2px;
+  }
+  
+  .nav-link {
+    padding: 5px 7px;
+    font-size: 0.85rem;
+  }
+  
+  /* Adjust body padding for small screens */
+  body {
+    padding-top: 105px !important;
+  }
+}
+
+/* Add compact header styling */
+.header-compact {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+.header-compact .navbar {
+  padding: 8px 20px !important;
+}
+
+.header-compact .logo-img {
+  height: 40px !important;
+}
+
+/* Smooth transition for header changes */
+.header,
+.navbar,
+.logo-img {
+  transition: all 0.3s ease !important;
+}
+
+@media (max-width: 768px) {
+  .header-compact .navbar {
+    padding: 8px 15px !important;
+  }
+  
+  .header-compact .logo-img {
+    height: 35px !important;
+  }
+}
+  
+  .nav-list {
+    gap: 5px;
+  }
+  
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 5px 8px;
+  }
+  
+  /* Adjust body padding for small mobile */
+  body {
+    padding-top: 100px !important;
+  }

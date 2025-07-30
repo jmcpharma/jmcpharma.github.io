@@ -1,0 +1,6 @@
+/* Map and iframe styles */
+.map-frame {
+  border: 0;
+  border-radius: 10px;
+  width: 100%;
+}

@@ -1,0 +1,151 @@
+/* Enhancing mobile touch experience */
+
+/* Better touch feedback for buttons */
+.btn {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* Add touch feedback for company cards */
+.company-card.touch-active {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15), 0 5px 15px rgba(230, 57, 70, 0.1);
+  border-color: rgba(230, 57, 70, 0.2);
+}
+
+/* Add touch feedback for all interactive elements */
+a:active, 
+.nav-link:active,
+.partner-name:active,
+.specialty-name:active,
+.contact-item:active {
+  opacity: 0.7;
+  transition: opacity 0.1s ease;
+}
+
+/* Improve tap target sizes for navigation on mobile */
+@media (max-width: 768px) {
+  .nav-link {
+    padding: 12px;
+    margin: 0 5px;
+  }
+  
+  .footer-contact-item {
+    padding: 10px 0;
+  }
+  
+  /* Make sure form elements are easy to tap */
+  input, 
+  textarea, 
+  select, 
+  button {
+    min-height: 44px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    padding: 8px 12px;
+  }
+  
+  /* Better touch targets */
+  .partner-list li,
+  .specialty-list li,
+  .contact-item,
+  .footer-contact-item {
+    min-height: 44px;
+    padding: 10px 0;
+  }
+  
+  /* Enhance card touch experience */
+  .company-card {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Better button touch targets */
+  .btn {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+}
+
+/* Fix for iOS scroll issues */
+html {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Disable unwanted hover effects on touch devices */
+@media (hover: none) {
+  .nav-link:hover::after {
+    width: 0;
+  }
+  
+  .nav-link.active::after {
+    width: 100%;
+  }
+  
+  /* Better handling of touch states */
+  .nav-link:active::after {
+    width: 50%;
+  }
+  
+  /* Remove hover animations that don't work well on touch */
+  a:hover,
+  .btn:hover,
+  .company-card:hover,
+  .partner-name:hover,
+  .specialty-name:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Smooth scrolling for page navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* For ultra-small devices like Galaxy Fold */
+@media (max-width: 350px) {
+  .nav-list {
+    gap: 2px !important;
+  }
+  
+  .nav-item {
+    margin: 0 1px !important;
+  }
+  
+  .nav-link {
+    padding: 4px 5px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .logo-img {
+    height: 35px !important;
+  }
+  
+  body {
+    padding-top: 100px !important;
+  }
+}

@@ -1,0 +1,29 @@
+/* Special fixes for the wave connections */
+
+/* Now we want a gap between companies and about section */
+#companies {
+  padding-bottom: 100px;
+  margin-bottom: 0;
+}
+
+/* Fixes for the about section wave */
+#about .wave-container.top-wave {
+  font-size: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+  background: transparent;
+}
+
+#about .wave-container.top-wave img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Force no gaps between sections */
+section + section {
+  margin-top: 0;
+}

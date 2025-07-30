@@ -1,0 +1,80 @@
+/* Dark mode support for users who prefer dark color schemes */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dark-color: #f1faee;
+    --light-color: #121212;
+    --white-color: #121212;
+    --gray-color: #a0a0a0;
+  }
+  
+  body {
+    background-color: #121212;
+    color: #f1faee;
+  }
+  
+  /* Header dark mode */
+  .header {
+    background: rgba(30, 30, 30, 0.95) !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .nav-link {
+    color: #f1faee !important;
+  }
+  
+  /* Company cards dark mode */
+  .company-card {
+    background-color: #1e1e1e;
+    border-color: #333;
+  }
+  
+  .partner-name,
+  .specialty-name {
+    color: #e0e0e0;
+  }
+  
+  /* Contact section dark mode */
+  .contact-info {
+    background-color: #1e1e1e;
+  }
+  
+  .contact-text {
+    color: #e0e0e0;
+  }
+  
+  /* Footer dark mode */
+  .footer {
+    background-color: #1a1a1a;
+  }
+  
+  .footer-bottom {
+    background-color: #151515;
+  }
+  
+  /* Section title and subtitle colors */
+  .section-title {
+    color: #f1faee;
+  }
+  
+  .section-subtitle,
+  .company-tagline,
+  .specialty-desc {
+    color: #a0a0a0 !important;
+  }
+  
+  /* Buttons dark mode */
+  .btn-outline {
+    border-color: #e63946;
+    color: #e63946;
+  }
+  
+  .btn-outline:hover {
+    background-color: rgba(230, 57, 70, 0.1);
+  }
+  
+  /* Wave decorations for dark mode */
+  .wave-container .wave-img {
+    filter: brightness(0.8) saturate(0.8);
+  }
+}

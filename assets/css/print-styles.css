@@ -1,0 +1,90 @@
+/* Print styles for JMC Group website */
+@media print {
+  /* Hide elements not needed for print */
+  .header,
+  .hero-buttons,
+  .wave-container,
+  .directions-btn,
+  footer {
+    display: none !important;
+  }
+  
+  /* Remove backgrounds and shadows for better printing */
+  body,
+  section,
+  .company-card,
+  .contact-info {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  /* Ensure text is readable when printed */
+  .hero-title,
+  .section-title,
+  .company-name,
+  .contact-title {
+    color: black !important;
+  }
+  
+  .highlight {
+    color: #e63946 !important;
+  }
+  
+  /* Adjust margins and padding */
+  section {
+    padding: 20px 0 !important;
+    margin: 0 !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Make sure everything fits well on paper */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Ensure company cards print well */
+  .company-grid {
+    display: block !important;
+  }
+  
+  .company-card {
+    margin: 20px 0 !important;
+    page-break-inside: avoid;
+    border: 1px solid #ddd !important;
+    padding: 15px !important;
+  }
+  
+  /* Make sure contact info prints clearly */
+  .contact-grid {
+    display: block !important;
+  }
+  
+  .contact-info {
+    padding: 15px !important;
+    border: 1px solid #ddd !important;
+    margin-bottom: 20px !important;
+  }
+  
+  /* Hide map on print */
+  .map-container {
+    display: none !important;
+  }
+  
+  /* Make sure URLs are visible in printed version */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+  
+  /* Don't show URL for internal links and images */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after,
+  a.logo:after,
+  a.nav-link:after {
+    content: "";
+  }
+}

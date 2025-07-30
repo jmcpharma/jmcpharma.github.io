@@ -1,0 +1,131 @@
+/* Responsive Utilities */
+
+/* ===============================
+   MOBILE DEVICES (480px and below)
+   =============================== */
+@media (max-width: 480px) {
+  /* Typography scaling for small screens */
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  /* Container adjustments */
+  .container {
+    padding: 0 15px;
+  }
+  
+  /* Mobile header */
+  .header {
+    width: calc(100% - 20px) !important;
+    top: 10px !important;
+    border-radius: 15px !important;
+  }
+  
+  /* Better navbar spacing on mobile */
+  .navbar {
+    padding: 10px 15px !important;
+    flex-direction: column;
+  }
+  
+  .logo {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-item {
+    margin: 0 5px;
+  }
+  
+  .nav-link {
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+  
+  /* Adjust body padding for mobile */
+  body {
+    padding-top: 110px !important;
+  }
+}
+
+/* ===============================
+   TABLET DEVICES (481px to 768px)
+   =============================== */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section-title {
+    font-size: 2.4rem;
+  }
+  
+  /* Container adjustments */
+  .container {
+    padding: 0 20px;
+  }
+}
+
+/* ===============================
+   LAPTOP DEVICES (769px to 1200px)
+   =============================== */
+@media (min-width: 769px) and (max-width: 1200px) {
+  /* Header adjustments */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    z-index: 1000;
+  }
+  
+  body {
+    padding-top: 70px; /* Add padding to account for fixed header */
+  }
+}
+
+/* ===============================
+   LARGE SCREENS (1201px to 1800px)
+   =============================== */
+@media (min-width: 1201px) and (max-width: 1800px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* ===============================
+   EXTRA LARGE SCREENS (1800px+)
+   =============================== */
+@media (min-width: 1801px) {
+  .container {
+    max-width: 1600px;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .hero-title {
+    font-size: 4.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 2rem;
+  }
+}

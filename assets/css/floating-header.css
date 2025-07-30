@@ -1,0 +1,26 @@
+/* Additional header styling to enhance the floating effect */
+
+/* Make the header more visually appealing */
+.header {
+  transition: all 0.4s ease-out !important;
+}
+
+/* Subtle hover effect for larger screens */
+@media (min-width: 992px) {
+  .header:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.18) !important;
+    transform: translateY(-2px) !important;
+  }
+}
+
+/* Add a subtle border to enhance the floating effect */
+@media (min-width: 768px) {
+  .header {
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  }
+}
+
+/* Smoother transition for all header elements */
+.header * {
+  transition: all 0.3s ease;
+}

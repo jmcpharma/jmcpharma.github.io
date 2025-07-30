@@ -1,0 +1,35 @@
+/* Fix for header overlap with content */
+body {
+  /* Add padding to top to prevent content from going under the header */
+  padding-top: 80px !important;
+}
+
+/* Hero sections are typically designed to go under the header, so we adjust them */
+.hero, .hero-simple {
+  margin-top: 50px !important;
+  padding-top: 120px !important;
+}
+
+/* Additional spacing for large screens */
+@media (min-width: 1440px) {
+  body {
+    padding-top: 90px !important;
+  }
+  
+  .hero, .hero-simple {
+    margin-top: 50px !important;
+    padding-top: 130px !important;
+  }
+}
+
+/* Fine-tuning for mobile */
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px !important;
+  }
+  
+  .hero, .hero-simple {
+    margin-top: -70px !important;
+    padding-top: 110px !important;
+  }
+}

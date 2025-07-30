@@ -1,0 +1,94 @@
+/* Section transition fixes */
+
+/* Add proper spacing to the companies section */
+#companies {
+  padding-bottom: 100px; /* Increase bottom padding for more space */
+  position: relative;
+  z-index: 5;
+  margin-bottom: 0; /* Remove bottom margin */
+  overflow: hidden; /* Hide any overflow */
+}
+
+/* Ensure the company cards have proper spacing */
+.company-grid {
+  margin-bottom: 30px;
+}
+
+/* Fix About section connection */
+#about {
+  position: relative;
+  z-index: 10;
+  margin-top: 0;
+}
+
+/* Make the wave connection cleaner */
+#about .wave-container.top-wave {
+  margin-top: 0px; /* Keep it aligned with companies section */
+  background-color: transparent; /* Make background transparent */
+  display: block;
+  line-height: 0;
+  font-size: 0;
+  position: relative;
+  z-index: 10;
+  overflow: hidden; /* Hide any overflow */
+  max-height: 100px; /* Control the height of the wave */
+}
+
+/* Fix the HTML structure issue in the About section */
+.about .container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* Make sure all wave images display properly */
+.wave-container img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fix for the black space between about and contact sections */
+#about + #contact,
+.about + .contact,
+#about + section,
+section#about + section {
+  margin-top: -5px !important; /* Force removal of gap */
+}
+
+/* Ensure sections fit together without gaps */
+section {
+  position: relative;
+}
+
+/* Fix connection issue between about and contact sections */
+#contact {
+  position: relative;
+  z-index: 15; /* Higher than about section */
+  margin-top: -5px;
+}
+
+/* Specifically target the wave container in the about section */
+#about .wave-container.bottom-wave {
+  margin-bottom: -5px !important;
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Additional fixes for the gap between sections */
+.companies {
+  background-color: #ffffff;
+  padding-bottom: 80px; /* Use consistent padding */
+}
+
+/* Smooth transition between companies and about section */
+.companies + #about {
+  margin-top: -5px; /* Pull up the about section slightly to ensure no gap */
+}
+
+/* Ensure the about section has proper background and padding */
+.about {
+  background-color: #000000;
+  padding: 0;
+  overflow: visible;
+}
