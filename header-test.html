@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMC Header Test - WebStudy Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/jmc-logo-web-icon.png">
+    <!-- Reset and base styles -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      body {
+        background-color: #f8f9fa;
+        min-height: 3000px; /* Force scrollbar to appear */
+        color: #333;
+      }
+      
+      .container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+      
+      /* Hero section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+      }
+      
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(90deg, #ff5a5f, #ff8a8e);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+      }
+      
+      /* Content sections */
+      .test-section {
+        height: 500px;
+        background-color: white;
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      }
+      
+      /* Device info display */
+      .device-info {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(13, 17, 23, 0.8);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        z-index: 9999;
+        font-size: 12px;
+      }
+
+      /* Scroll indicator */
+      .scroll-indicator {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background: rgba(13, 17, 23, 0.8);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        z-index: 999;
+        font-size: 12px;
+      }
+      
+      /* Toggle button for header test */
+      .toggle-header-state {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: #ff5a5f;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 9999;
+        font-weight: 600;
+      }
+    </style>
+    <!-- Floating header specific styles -->
+    <link rel="stylesheet" href="assets/css/floating-header-webstudy.css">
+  </head>
+
+  <body>
+    <!-- WebStudy-style Floating Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="/" class="logo">
+            <img src="assets/images/jmc-logo.png" alt="JMC Group" class="logo-img">
+            <span>Group</span>
+          </a>
+          <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="nav-menu">
+            <ul class="nav-list">
+              <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">Our Companies</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>WebStudy-Style Header Test</h1>
+        <p>Scroll down to see the floating header effect in action</p>
+      </div>
+    </section>
+
+    <!-- Test Sections to enable scrolling -->
+    <div class="container">
+      <section class="test-section">Section 1</section>
+      <section class="test-section">Section 2</section>
+      <section class="test-section">Section 3</section>
+      <section class="test-section">Section 4</section>
+      <section class="test-section">Section 5</section>
+    </div>
+
+    <!-- Device info display -->
+    <div class="device-info"></div>
+    <div class="scroll-indicator"></div>
+    <button class="toggle-header-state">Toggle Header</button>
+
+    <!-- Scripts -->
+    <script src="assets/js/header-effects.js" defer></script>
+    <script>
+      // Wait for DOM to be fully loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('.header');
+        const deviceInfo = document.querySelector('.device-info');
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        const toggleButton = document.querySelector('.toggle-header-state');
+        
+        // Display current viewport size for testing
+        function updateDeviceInfo() {
+          deviceInfo.textContent = `Screen: ${window.innerWidth}px × ${window.innerHeight}px`;
+        }
+        
+        // Display current scroll position
+        function updateScrollInfo() {
+          scrollIndicator.textContent = `Scroll: ${window.scrollY}px`;
+        }
+        
+        // Toggle header state for testing
+        toggleButton.addEventListener('click', function() {
+          if (header.classList.contains('scrolled')) {
+            header.classList.remove('scrolled');
+            document.body.classList.remove('header-scrolled');
+          } else {
+            header.classList.add('scrolled');
+            document.body.classList.add('header-scrolled');
+          }
+        });
+        
+        // Update information on load and resize
+        updateDeviceInfo();
+        updateScrollInfo();
+        
+        // Add event listeners
+        window.addEventListener('resize', updateDeviceInfo);
+        window.addEventListener('scroll', updateScrollInfo);
+      });
+    </script>
+  </body>
+</html>

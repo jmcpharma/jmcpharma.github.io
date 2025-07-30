@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebStudy-Style Header Implementation Instructions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: #0d1117;
+      border-bottom: 2px solid #ff5a5f;
+      padding-bottom: 10px;
+    }
+    
+    h2 {
+      color: #0d1117;
+      margin-top: 30px;
+    }
+    
+    pre, code {
+      background-color: #f5f5f5;
+      border-radius: 5px;
+      padding: 15px;
+      overflow-x: auto;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 14px;
+    }
+    
+    .note {
+      background-color: #fff8e1;
+      border-left: 4px solid #ffca28;
+      padding: 15px;
+      margin: 20px 0;
+    }
+    
+    .success {
+      background-color: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      padding: 15px;
+      margin: 20px 0;
+    }
+    
+    ul li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>WebStudy-Style Floating Header Implementation</h1>
+  
+  <div class="note">
+    <strong>Important:</strong> This guide explains how to implement the WebStudy-style floating header effect for the JMC website. This header starts as a full-width bar at the top and transforms into a floating header with rounded corners when the user scrolls down.
+  </div>
+  
+  <h2>1. Required Files</h2>
+  <ul>
+    <li><strong>floating-header-webstudy.css</strong> - Contains the core styling for the header</li>
+    <li><strong>header-effects.js</strong> - Handles the scroll behavior for the header transformation</li>
+  </ul>
+  
+  <h2>2. Add to HTML</h2>
+  
+  <!-- Add these lines to the <head> section of your HTML file -->
+  <p>Add this to the &lt;head&gt; section of your HTML file:</p>
+  <pre><code>&lt;link rel="stylesheet" href="assets/css/floating-header-webstudy.css"&gt;</code></pre>
+
+  <!-- Add this right before the closing </body> tag -->
+  <p>Add this right before the closing &lt;/body&gt; tag:</p>
+  <pre><code>&lt;script src="assets/js/header-effects.js" defer&gt;&lt;/script&gt;</code></pre>

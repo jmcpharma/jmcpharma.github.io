@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMC Header Test - Large Screens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/jmc-logo-web-icon.png">
+    <style>
+      /* Base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      body {
+        background-color: #f8f9fa;
+        min-height: 3000px;
+        color: #333;
+      }
+      
+      /* Container */
+      .container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+      
+      /* Test sections */
+      .screen-test {
+        padding: 50px 20px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 1200px;
+      }
+      
+      /* Screen size display */
+      #screen-info {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        border-radius: 6px;
+        font-size: 14px;
+        z-index: 9999;
+      }
+      
+      /* Scroll position */
+      #scroll-info {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        padding: 10px 15px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        border-radius: 6px;
+        font-size: 14px;
+        z-index: 9999;
+      }
+      
+      /* Test area */
+      .test-area {
+        background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+        color: white;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      
+      .test-area h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(90deg, #ff5a5f, #ff8a8e);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      
+      .test-area p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin-bottom: 1.5rem;
+      }
+      
+      .screen-type {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #0d1117;
+        margin-bottom: 15px;
+      }
+      
+      .screen-details {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 25px;
+      }
+      
+      .toggle-button {
+        background: #ff5a5f;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      
+      .toggle-button:hover {
+        background: #ff4448;
+      }
+    </style>
+    <!-- Import the floating header style -->
+    <link rel="stylesheet" href="assets/css/floating-header-webstudy.css">
+  </head>
+  
+  <body>
+    <!-- WebStudy-Style Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="/" class="logo">
+            <img src="assets/images/jmc-logo.png" alt="JMC Group" class="logo-img">
+            <span>Group</span>
+          </a>
+          <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="nav-menu">
+            <ul class="nav-list">
+              <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">Our Companies</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    
+    <!-- Testing Hero -->
+    <section class="test-area">
+      <h1>WebStudy Header Test - Large Screens</h1>
+      <p>Scroll down to test the floating header effect on different screen sizes including Laptop L and 4K displays</p>
+      <button class="toggle-button" id="toggle-header">Toggle Header State</button>
+    </section>
+    
+    <!-- Screen Test Sections -->
+    <div class="screen-test">
+      <div class="screen-type" id="current-screen">Detecting...</div>
+      <div class="screen-details" id="dimensions">Getting dimensions...</div>
+      <p>This section tests the responsive header behavior for your current screen size. The header should now be floating with rounded corners.</p>
+    </div>
+    
+    <!-- Test sections for scrolling -->
+    <div class="container">
+      <div class="screen-test">
+        <h2>Header Test Section 1</h2>
+        <p>Testing header behavior on scroll...</p>
+      </div>
+      
+      <div class="screen-test">
+        <h2>Header Test Section 2</h2>
+        <p>Continue scrolling to ensure the header remains fixed in the correct position.</p>
+      </div>
+      
+      <div class="screen-test">
+        <h2>Header Test Section 3</h2>
+        <p>The header should maintain its floating style with proper dimensions for your screen size.</p>
+      </div>
+      
+      <div class="screen-test">
+        <h2>Header Test Section 4</h2>
+        <p>For large screens (Laptop L, 4K etc.), the header should be wider with appropriate spacing.</p>
+      </div>
+      
+      <div class="screen-test">
+        <h2>Header Test Section 5</h2>
+        <p>Test complete! The header should now be properly optimized for all screen sizes.</p>
+      </div>
+    </div>
+    
+    <!-- Screen size display -->
+    <div id="screen-info">Loading...</div>
+    <div id="scroll-info">Scroll: 0px</div>
+    
+    <!-- Script for header testing -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('.header');
+        const screenInfo = document.getElementById('screen-info');
+        const scrollInfo = document.getElementById('scroll-info');
+        const toggleButton = document.getElementById('toggle-header');
+        const currentScreen = document.getElementById('current-screen');
+        const dimensions = document.getElementById('dimensions');
+        
+        // Detect screen type
+        function detectScreenType() {
+          const width = window.innerWidth;
+          let screenType = '';
+          
+          if (width >= 3840) {
+            screenType = '4K+ Display';
+          } else if (width >= 2560) {
+            screenType = '2K-4K Display';
+          } else if (width >= 1920) {
+            screenType = 'Large Desktop';
+          } else if (width >= 1440) {
+            screenType = 'Laptop L';
+          } else if (width >= 1024) {
+            screenType = 'Laptop';
+          } else if (width >= 768) {
+            screenType = 'Tablet';
+          } else {
+            screenType = 'Mobile';
+          }
+          
+          return screenType;
+        }
+        
+        // Update screen info
+        function updateScreenInfo() {
+          const width = window.innerWidth;
+          const height = window.innerHeight;
+          screenInfo.textContent = `Screen: ${width}px × ${height}px`;
+          currentScreen.textContent = detectScreenType();
+          dimensions.textContent = `Dimensions: ${width}px × ${height}px`;
+        }
+        
+        // Update scroll position
+        function updateScrollInfo() {
+          scrollInfo.textContent = `Scroll: ${window.scrollY}px`;
+        }
+        
+        // Throttle function to limit execution
+        function throttle(callback, delay) {
+          let lastCall = 0;
+          return function(...args) {
+            const now = new Date().getTime();
+            if (now - lastCall >= delay) {
+              lastCall = now;
+              callback(...args);
+            }
+          };
+        }
+        
+        // Get scroll threshold based on screen size
+        function getScrollThreshold() {
+          if (window.innerWidth >= 2560) {
+            return 100; // For 4K+ displays
+          } else if (window.innerWidth >= 1440) {
+            return 80; // For Laptop L and larger screens
+          } else {
+            return 60; // Default for smaller screens
+          }
+        }
+        
+        // Toggle header class based on scroll position
+        function toggleHeaderClass() {
+          const threshold = getScrollThreshold();
+          
+          if (window.scrollY > threshold) {
+            if (!header.classList.contains('scrolled')) {
+              header.classList.add('scrolled');
+            }
+          } else {
+            if (header.classList.contains('scrolled')) {
+              header.classList.remove('scrolled');
+            }
+          }
+          
+          updateScrollInfo();
+        }
+        
+        // Toggle header button
+        toggleButton.addEventListener('click', function() {
+          header.classList.toggle('scrolled');
+        });
+        
+        // Initialize
+        updateScreenInfo();
+        toggleHeaderClass();
+        
+        // Event listeners
+        window.addEventListener('scroll', throttle(toggleHeaderClass, 50));
+        window.addEventListener('resize', throttle(function() {
+          updateScreenInfo();
+          toggleHeaderClass();
+        }, 100));
+      });
+    </script>
+  </body>
+</html>

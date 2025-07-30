@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMC Responsive Header Tester</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      body {
+        background-color: #f8f9fa;
+        min-height: 3000px; /* Force scrollbar to appear */
+        color: #333;
+      }
+      
+      .container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* WebStudy-inspired floating header */
+      .header {
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        background-color: #0d1117;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      }
+      
+      /* Initial state - full width bar */
+      .header:not(.scrolled) {
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 15px 0;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for separation */
+      }
+      
+      /* Adjustments for initial state on large screens */
+      @media (min-width: 1440px) {
+        .header:not(.scrolled) {
+          padding: 18px 0; /* More padding on large screens */
+        }
+        
+        .header:not(.scrolled) .navbar {
+          padding: 0 20px; /* More horizontal padding */
+        }
+      }
+      
+      /* Scrolled state - floating with rounded corners */
+      .header.scrolled {
+        width: calc(100% - 60px);
+        max-width: 1400px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 15px;
+        border-radius: 12px;
+        padding: 0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        background: rgba(13, 17, 23, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        animation: headerFloatIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      
+      /* Header float-in animation */
+      @keyframes headerFloatIn {
+        0% {
+          transform: translateY(-10px);
+          opacity: 0.8;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      
+      /* Navbar styling */
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      .header:not(.scrolled) .navbar {
+        padding: 5px 15px;
+      }
+      
+      .header.scrolled .navbar {
+        padding: 12px 15px;
+      }
+      
+      /* Logo styling */
+      .logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #fff;
+        transition: all 0.3s ease;
+      }
+      
+      .logo-img {
+        height: 40px;
+        transition: all 0.3s ease;
+      }
+      
+      .header.scrolled .logo-img {
+        height: 35px;
+      }
+      
+      .logo span {
+        font-weight: 600;
+        margin-left: 8px;
+        font-size: 18px;
+        color: #fff;
+        transition: all 0.3s ease;
+      }
+      
+      /* Scrolled logo effect */
+      .header.scrolled .logo {
+        transform: scale(0.95);
+      }
+      
+      /* Navigation menu */
+      .nav-list {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .nav-item {
+        margin: 0 12px;
+        position: relative;
+      }
+      
+      .nav-link {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 0;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+      
+      .nav-link:hover, .nav-link.active {
+        color: #ff5a5f;
+      }
+      
+      /* Active link indicator */
+      .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #ff5a5f;
+        transform: scaleX(1);
+        transition: transform 0.3s ease;
+      }
+      
+      .nav-link:not(.active)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #ff5a5f;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+      
+      .nav-link:not(.active):hover::after {
+        transform: scaleX(1);
+      }
+      
+      /* Menu toggle for mobile */
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+      }
+      
+      /* Hero section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(90deg, #ff5a5f, #ff8a8e);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+      }
+      
+      /* Content sections */
+      .section {
+        padding: 50px 0;
+      }
+      
+      /* Responsive styles */
+      @media (min-width: 3841px) {
+        /* 8K displays and above */
+        .header.scrolled {
+          max-width: 2400px;
+          width: 85% !important; /* Percentage-based width for better scaling */
+          top: 30px;
+          border-radius: 16px; /* Larger radius for bigger screens */
+        }
+        
+        .container {
+          max-width: 2400px;
+          width: 85%; /* Match header width */
+        }
+        
+        .navbar {
+          padding: 0 30px !important;
+        }
+        
+        .header.scrolled .navbar {
+          padding: 15px 30px !important;
+        }
+        
+        .logo-img {
+          height: 50px !important;
+        }
+        
+        .header.scrolled .logo-img {
+          height: 45px !important;
+        }
+        
+        .logo span {
+          font-size: 22px !important;
+        }
+        
+        .nav-link {
+          font-size: 18px !important;
+        }
+      }
+      
+      @media (min-width: 2561px) and (max-width: 3840px) {
+        /* 4K-6K displays */
+        .header.scrolled {
+          max-width: 2200px;
+          width: 88% !important; /* Percentage-based width */
+          top: 25px;
+          border-radius: 14px; /* Adjusted border radius */
+        }
+        
+        .container {
+          max-width: 2200px;
+          width: 88%; /* Match header width */
+        }
+        
+        .navbar {
+          padding: 0 25px !important;
+        }
+        
+        .header.scrolled .navbar {
+          padding: 14px 25px !important;
+        }
+        
+        .logo-img {
+          height: 48px !important;
+        }
+        
+        .header.scrolled .logo-img {
+          height: 42px !important;
+        }
+        
+        .logo span {
+          font-size: 20px !important;
+        }
+        
+        .nav-link {
+          font-size: 17px !important;
+        }
+      }
+      
+      @media (min-width: 1921px) and (max-width: 2560px) {
+        /* 2K-4K displays */
+        .header.scrolled {
+          max-width: 1800px;
+          width: 90% !important; /* Using percentage instead of calc for better scaling */
+          top: 20px;
+        }
+        
+        .container {
+          max-width: 1800px;
+          width: 90%; /* Match header width */
+        }
+        
+        .navbar {
+          padding: 0 20px !important;
+        }
+        
+        .logo-img {
+          height: 45px !important;
+        }
+        
+        .header.scrolled .logo-img {
+          height: 40px !important;
+        }
+      }
+      
+      @media (min-width: 1441px) and (max-width: 1920px) {
+        /* Large desktop monitors */
+        .header.scrolled {
+          max-width: 1600px;
+          width: 92% !important; /* Using percentage for better scaling */
+          top: 16px;
+        }
+        
+        .container {
+          max-width: 1600px;
+          width: 92%; /* Match header width */
+        }
+        
+        .logo-img {
+          height: 42px !important;
+        }
+        
+        .header.scrolled .logo-img {
+          height: 38px !important;
+        }
+      }
+      
+      @media (min-width: 1201px) and (max-width: 1440px) {
+        /* Standard laptops and desktops - Laptop L (1440px) */
+        .header.scrolled {
+          max-width: 1320px;
+          width: calc(100% - 40px) !important; /* Reduced side margins */
+          top: 12px !important; /* Adjusted top margin */
+          border-radius: 10px; /* Slightly reduced border radius */
+        }
+        
+        .container {
+          max-width: 1320px;
+        }
+      }
+      
+      @media (max-width: 992px) {
+        .header.scrolled {
+          width: calc(100% - 30px);
+          top: 10px;
+        }
+        
+        .menu-toggle {
+          display: block;
+          cursor: pointer;
+          z-index: 10;
+        }
+        
+        .menu-toggle span {
+          display: block;
+          width: 25px;
+          height: 3px;
+          background-color: #fff;
+          margin: 5px 0;
+          transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+          opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        .nav-menu {
+          display: none;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          height: 100vh;
+          background-color: rgba(13, 17, 23, 0.95);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          z-index: 9;
+          transition: right 0.3s ease;
+          padding-top: 80px;
+        }
+        
+        .nav-menu.active {
+          display: block;
+          right: 0;
+        }
+        
+        .nav-list {
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+        }
+        
+        .nav-item {
+          margin: 15px 0;
+        }
+        
+        .nav-link {
+          font-size: 20px;
+          padding: 12px;
+          display: block;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .header.scrolled {
+          width: calc(100% - 20px);
+          top: 10px;
+          border-radius: 14px;
+        }
+        
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+      }
+      
+      /* Screen size display */
+      .screen-info {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-size: 14px;
+        z-index: 9999;
+        text-align: center;
+      }
+      
+      /* Device size simulator buttons */
+      .device-simulator {
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        z-index: 9999;
+        max-width: 90%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 15px;
+      }
+      
+      .device-btn {
+        background: #0d1117;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: all 0.3s ease;
+      }
+      
+      .device-btn:hover {
+        background: #ff5a5f;
+      }
+      
+      /* Test grid for visual reference */
+      .breakpoint-indicator {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+      }
+      
+      .breakpoint-indicator::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: 80%;
+        border: 2px dashed rgba(255, 90, 95, 0.2);
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- WebStudy-Style Floating Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="/" class="logo">
+            <img src="assets/images/jmc-logo.png" alt="JMC Group" class="logo-img">
+            <span>Group</span>
+          </a>
+          <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="nav-menu">
+            <ul class="nav-list">
+              <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">Our Companies</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>Responsive Header Test</h1>
+        <p>This page allows you to test the floating header across all screen sizes</p>
+      </div>
+    </section>
+
+    <!-- Breakpoint Indicator -->
+    <div class="breakpoint-indicator"></div>
+
+    <!-- Screen Size Display -->
+    <div class="screen-info">
+      <div class="size">Width: <span id="screen-width">0</span>px × Height: <span id="screen-height">0</span>px</div>
+      <div class="device">Device Category: <span id="device-category">Unknown</span></div>
+    </div>
+
+    <!-- Device Size Simulator -->
+    <div class="device-simulator">
+      <button class="device-btn" data-size="Mobile S">320×568</button>
+      <button class="device-btn" data-size="Mobile M">375×667</button>
+      <button class="device-btn" data-size="Mobile L">425×812</button>
+      <button class="device-btn" data-size="Tablet">768×1024</button>
+      <button class="device-btn" data-size="Laptop">1024×768</button>
+      <button class="device-btn" data-size="Laptop M">1280×800</button>
+      <button class="device-btn" data-size="Laptop L">1440×900</button>
+      <button class="device-btn" data-size="1080p">1920×1080</button>
+      <button class="device-btn" data-size="2K">2560×1440</button>
+      <button class="device-btn" data-size="4K">3840×2160</button>
+      <button class="device-btn" data-size="8K">7680×4320</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="container">
+      <section class="section">
+        <h2>Header Features</h2>
+        <p>The WebStudy-style floating header includes:</p>
+        <ul>
+          <li>Initial full-width state at the top</li>
+          <li>Scrolled state with rounded corners and backdrop blur</li>
+          <li>Smooth animation when transitioning between states</li>
+          <li>Proper padding and sizing for all screen sizes</li>
+          <li>Mobile menu for smaller screens</li>
+          <li>Optimized layout for ultra-large displays</li>
+        </ul>
+      </section>
+      
+      <section class="section">
+        <h2>Screen Size Optimization</h2>
+        <p>The header has specific optimizations for:</p>
+        <ul>
+          <li>Mobile phones (up to 576px width)</li>
+          <li>Tablets (576px to 992px)</li>
+          <li>Laptops (992px to 1440px)</li>
+          <li>Desktop monitors (1440px to 1920px)</li>
+          <li>2K displays (1920px to 2560px)</li>
+          <li>4K displays (2560px to 3840px)</li>
+          <li>8K displays (3840px and above)</li>
+        </ul>
+      </section>
+      
+      <section class="section">
+        <h2>Testing Instructions</h2>
+        <p>To test the header behavior:</p>
+        <ol>
+          <li>Scroll down to see the header transition to the floating state</li>
+          <li>Try different screen sizes using the device simulator buttons</li>
+          <li>Test the mobile menu by clicking the hamburger icon on smaller screens</li>
+          <li>Verify that the header is positioned correctly at all sizes</li>
+        </ol>
+      </section>
+    </div>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('.header');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const screenWidth = document.getElementById('screen-width');
+        const screenHeight = document.getElementById('screen-height');
+        const deviceCategory = document.getElementById('device-category');
+        const deviceButtons = document.querySelectorAll('.device-btn');
+        
+        if (!header) return;
+        
+        // Throttle function to improve scroll performance
+        function throttle(callback, delay) {
+            let lastCall = 0;
+            return function(...args) {
+                const now = new Date().getTime();
+                if (now - lastCall >= delay) {
+                    lastCall = now;
+                    callback(...args);
+                }
+            };
+        }
+        
+        // Get appropriate scroll threshold based on screen size
+        function getScrollThreshold() {
+            if (window.innerWidth >= 3840) {
+                return Math.min(120, window.innerHeight * 0.08); // 8K displays
+            } else if (window.innerWidth >= 2560) {
+                return Math.min(100, window.innerHeight * 0.07); // 4K-6K displays
+            } else if (window.innerWidth >= 1921) {
+                return Math.min(80, window.innerHeight * 0.06); // 2K-4K displays
+            } else if (window.innerWidth >= 1440) {
+                return Math.min(70, window.innerHeight * 0.05); // Laptop L and large screens
+            } else if (window.innerWidth >= 992) {
+                return 60; // Standard laptops
+            } else {
+                return 50; // Small screens and mobile
+            }
+        }
+        
+        // Toggle header class based on scroll position
+        function toggleHeaderClass() {
+            const threshold = getScrollThreshold();
+            const scrollY = window.scrollY;
+            
+            // Add special handling for large screens
+            if (window.innerWidth >= 1440) {
+                if (scrollY > threshold) {
+                    if (!header.classList.contains('scrolled')) {
+                        header.classList.add('scrolled');
+                        document.body.classList.add('header-scrolled');
+                    }
+                } else {
+                    if (header.classList.contains('scrolled')) {
+                        header.classList.remove('scrolled');
+                        document.body.classList.remove('header-scrolled');
+                    }
+                }
+            } else {
+                // Standard behavior for smaller screens
+                if (scrollY > threshold) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+        }
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Prevent body scrolling when menu is open
+            document.body.classList.toggle('menu-open');
+            
+            if (document.body.classList.contains('menu-open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Update screen information
+        function updateScreenInfo() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            screenWidth.textContent = width;
+            screenHeight.textContent = height;
+            
+            // Determine device category
+            let category;
+            if (width >= 3840) {
+                category = "4K+ / 8K Display";
+            } else if (width >= 2560) {
+                category = "2K / 4K Display";
+            } else if (width >= 1920) {
+                category = "HD Desktop";
+            } else if (width >= 1440) {
+                category = "Laptop L";
+            } else if (width >= 1024) {
+                category = "Laptop";
+            } else if (width >= 768) {
+                category = "Tablet";
+            } else if (width >= 576) {
+                category = "Mobile (Large)";
+            } else {
+                category = "Mobile (Small)";
+            }
+            
+            deviceCategory.textContent = category;
+        }
+        
+        // Handle device simulator buttons
+        deviceButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const deviceInfo = this.textContent;
+                const deviceName = this.getAttribute('data-size');
+                
+                // Display info about the selected device size
+                alert(`This simulates a ${deviceName} device (${deviceInfo}).\n\nUse your browser's dev tools to actually resize the viewport for testing.`);
+            });
+        });
+        
+        // Close mobile menu when a nav link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 992 && navMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+        
+        // Menu toggle event listener
+        if (menuToggle) {
+            menuToggle.addEventListener('click', toggleMobileMenu);
+        }
+        
+        // Check on page load
+        toggleHeaderClass();
+        updateScreenInfo();
+        
+        // Check on scroll (with throttling)
+        window.addEventListener('scroll', throttle(toggleHeaderClass, 50));
+        
+        // Handle resize
+        window.addEventListener('resize', throttle(function() {
+            toggleHeaderClass();
+            updateScreenInfo();
+            
+            // Reset mobile menu state on resize to desktop
+            if (window.innerWidth > 992 && navMenu.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = '';
+            }
+        }, 100));
+      });
+    </script>
+  </body>
+</html>

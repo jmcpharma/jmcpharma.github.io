@@ -1,0 +1,24 @@
+<!-- Add this right before the closing </body> tag -->
+<script>
+// Immediate execution header effect script
+(function() {
+    // Get the header element
+    const header = document.querySelector('.header');
+    if (!header) return;
+    
+    // Function to update header state
+    function updateHeaderState() {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+    
+    // Initial state check
+    updateHeaderState();
+    
+    // Add scroll listener
+    window.addEventListener('scroll', updateHeaderState);
+})();
+</script>
